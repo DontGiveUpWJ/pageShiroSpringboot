@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>角色管理</title>
+    <link href="../../pub-ui/css/interface.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../pub-ui/plugins/artDialog/ui-dialog.css" rel="stylesheet">
+    <link href="../../pub-ui/css/app.css" rel="stylesheet">
+	<link href="../../pub-script/ztree/zTreeStyle.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="../../pub-ui/js/ieonly/html5shiv.js"></script>
+        <script src="../../pub-ui/js/ieonly/respond.js"></script>
+        <script src="../../pub-ui/js/ieonly/excanvas.js"></script>
+    <![endif]-->
+	
+</head>
+<body class="bg-graywhite font-sm">
+    <div f="div" class="pdl-big pdr-big pdb-md pdt-md border-bottom"><label f="" class="mgb-0 mgr-huge"><span f="span">编号：</span><input type="text" id = "rId"class="form-control inline-block" f="input"></label><label f="label-input" class="mgb-0 mgl-big"><span f="span">角色名称：</span><input type="text" id = "rName" class="form-control inline-block" f="input"></label>
+        <div f="div" class="pull-right"><button class="btn btn-primary" type="button" f="btn-icon" name="subRole" id="subRole">
+    <i class="font-icon font-icon-search" f="font-icon"></i>&nbsp;查询</button>
+            <button id="role-add" " class="btn mgl-lg text-primary" type="button" f="btn-icon">
+    <i class="font-icon font-icon-plus" f="font-icon"></i>&nbsp;新增</button>
+            <!--<button  id = "role-Resource" class="btn mgl-lg text-primary" type="button" f="btn-icon">
+    <i class="font-icon font-icon-plus" f="font-icon"></i>&nbsp;分配资源</button>-->
+	<button  onclick = "findResources();" class="btn mgl-lg text-primary" type="button" f="btn-icon">
+    <i class="font-icon font-icon-drupal" f="font-icon"></i>&nbsp;分配资源</button>
+            <button class="btn mgl-lg text-primary" id = "roleDel" type="button" f="btn-icon">
+    <i class="font-icon font-icon-trash-o" f="font-icon"></i>&nbsp;删除</button></div>
+	
+    </div>
+    <p f="p" class="mgr-big mgl-big text-muted mgt-big mgb-big" id = "show_count">共搜索到 922 条数据</p>
+    <div f="div" class="mgl-big mgr-big mgb-big pdb-lg bg-white pdl-lg pdr-lg with-headbg clearfix">
+        <div class="table-wrap">
+            <table class="table table-hover border-bottom mgb-0" style="border:none;" f="table" name="table" id="table">
+                <thead>
+                    <tr f="tr">
+                        <th f="th" class="text-center"><input class="js_select" type="checkbox" f="checkbox"></th>
+                        <th f="th">ID</th>
+                        <th f="th">角色名称</th>
+                        <th f="th">操作</th>
+                    </tr>
+                </thead>
+                <tbody id = "sList">
+                   
+                </tbody>
+            </table>
+        </div>
+        <!--<ul class="ui-page pull-right mgt-big" f="page" id="pageId">
+        </ul>-->
+		 <ul class="ui-page pull-right mgt-big" id = "pageList">
+        
+		</ul>
+    </div>
+  
+    <div tabindex="-1" aria-labelledby="title:1542180222591" aria-describedby="content:1542180222591" style="display: none; position: absolute; outline: 0px; left: 504px; top: 212px;">
+        <div i="dialog" class="ui-dialog">
+            <div class="ui-dialog-arrow-a"></div>
+            <div class="ui-dialog-arrow-b"></div>
+            <table class="ui-dialog-grid">
+                <tbody>
+                    <tr>
+                        <td i="header" class="ui-dialog-header"><button i="close" class="ui-dialog-close" title="取消">×</button>
+                            <div i="title" class="ui-dialog-title" id="title:1542180222591">添加用户</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td i="body" class="ui-dialog-body">
+                            <div i="content" class="ui-dialog-content" id="content:1542180222591" style="width: 300px;"><span class="ui-dialog-loading">Loading..</span></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td i="footer" class="ui-dialog-footer">
+                            <div i="statusbar" class="ui-dialog-statusbar" style="display: none;"></div>
+                            <div i="button" class="ui-dialog-button"><button type="button" i-id="cancel">取消</button><button type="button" i-id="ok" autofocus="" class="ui-dialog-autofocus">确定</button></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+	
+	
+	
+	
+	
+	<div class="modal fade bs-example-modal-sm" id="selectResources" tabindex="-1" role="dialog" aria-labelledby="selectRoleLabel">
+            <div class="modal-dialog modal-sm" role="document" style="height: 600px; ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">
+                                ×
+                            </span>
+                        </button>
+                        <h4 class="modal-title" id="selectRoleLabel">
+                            分配权限
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="boxRoleForm">
+                            <ul id="treeDemo" class="ztree">
+                            </ul>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" onclick="saveRoleResources();" class="btn btn-primary">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<script type="text/html" id="tpl-add">
+    <div f="div">
+        <form id="edit-form">
+            <p f="p" class="text-muted">
+                请输入角色名称：</p>
+            <input type="text" class="form-control mgb-lg js_roleName" id="roleId" f="input"> 
+        </form>
+    </div>
+</script>
+<script type="text/html" id="tpl-look">
+    <div f="div">
+        <form id="edit-form">
+            <p f="p" class="text-muted">
+                角色名称：</p>
+            <input type="text" class="form-control mgb-lg js_roleName" f="input"> 
+        </form>
+    </div>
+</script>
+<script type="text/html" id="tpl-update">
+    <div f="div">
+        <form id="role-form">
+            <p f="p" class="text-muted">
+                角色名称：</p>
+            <input type="text" class="form-control mgb-lg js_roleName" id = "roleId" f="input"> 
+        </form>
+    </div>
+</script>
+<script type="text/html" id="tpl-roleResource">
+    <div f="div">
+        <form id="boxRoleForm">
+            <ul id="treeDemo" class="ztree">
+            </ul>
+        </form>
+    </div>
+</script>
+<script src="../../pub-ui/js/jquery-1.11.3.min.js"></script>
+<script src="../../pub-ui/js/interface.min.js"></script>
+<script src="../../pub-ui/plugins/artDialog/dialog-plus.js"></script>
+<script src="../../pub-script/ztree/jquery.ztree.all.js"></script>
+<script src="../../pub-script/ztree/jquery.ztree.all-3.5.min.js"></script>
+<script src="../../pub-script/pageWJ/jqpaginator.min.js"></script>
+<!--<script src="../../pub-script/pageWJ/pageROle.js"></script>-->
+<script src="../../pub-script/showRole.js"></script>
+</html>

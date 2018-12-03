@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>角色管理</title>
+    <link href="../../pub-ui/css/interface.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../pub-ui/plugins/artDialog/ui-dialog.css" rel="stylesheet">
+    <link href="../../pub-ui/css/app.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="../../pub-ui/js/ieonly/html5shiv.js"></script>
+        <script src="../../pub-ui/js/ieonly/respond.js"></script>
+        <script src="../../pub-ui/js/ieonly/excanvas.js"></script>
+    <![endif]-->
+</head>
+<body class="bg-graywhite font-sm">
+    <div f="div" class="pdl-big pdr-big pdb-md pdt-md border-bottom">
+        <label f="label-input" class="mgb-0 mgl-big"><span f="span">服务名称：</span><input type="text" class="form-control inline-block" f="input"></label>
+        <div f="div" class="pull-right"><button class="btn btn-primary" type="button" f="btn-icon" name="sub" id="sub">
+    <i class="font-icon font-icon-search" f="font-icon"></i>&nbsp;查询</button>
+            <button id="user-add" onclick="$('#resourcesModal').modal();" class="btn mgl-lg text-primary" type="button" f="btn-icon">
+    <i class="font-icon font-icon-plus" f="font-icon"></i>&nbsp;同步esb服务</button>
+            <button class="btn mgl-lg text-primary" type="button" f="btn-icon">
+    <i class="font-icon font-icon-trash-o" f="font-icon"></i>&nbsp;同步zk服务</button>
+            <button class="btn mgl-lg text-primary" type="button" f="btn-icon">
+    <i class="font-icon font-icon-trash-o" f="font-icon"></i>&nbsp;删除</button>
+        </div>
+    </div>
+    <p f="p" class="mgr-big mgl-big text-muted mgt-big mgb-big">共搜索到 922 条数据</p>
+    <div f="div" class="mgl-big mgr-big mgb-big pdb-lg bg-white pdl-lg pdr-lg with-headbg clearfix">
+        <div class="table-wrap">
+            <table class="table table-hover border-bottom mgb-0" style="border:none;" f="table" name="table" id="table">
+                <thead>
+                    <tr f="tr">
+                        <th f="th" class="text-center"><input class="js_select" type="checkbox" f="checkbox"></th>
+                        <th f="th">服务名称</th>
+                        <th f="th">服务类型</th>
+                        <th f="th">中文名称</th>
+                        <th f="th">变更时间</th>
+                        <th f="th">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr f="tr" name="tr" id="tr">
+                        <td f="td" class="text-center"><input type="checkbox" f="checkbox"></td>
+                        <td f="td">用户服务</td>
+                        <td f="td">rest</td>
+                        <td f="td">订单服务信息</td>
+                        <td f="td">2018-11-14 17:01</td>
+                        <td f="td" class="text-primary"><a href="#none" f="a" class="mgr-sm text-primary" onclick="$('#addRole').modal();">修改</a></td>
+                    </tr>
+                    <tr f="tr" name="tr" id="tr">
+                        <td f="td" class="text-center"><input type="checkbox" f="checkbox"></td>
+                        <td f="td">用户服务</td>
+                        <td f="td">rest</td>
+                        <td f="td">订单服务信息</td>
+                        <td f="td">2018-11-14 17:01</td>
+                        <td f="td" class="text-primary"><a href="#none" f="a" class="mgr-sm text-primary" onclick="$('#addRole').modal();">修改</a></td>
+                    </tr>
+                    <tr f="tr" name="tr" id="tr">
+                        <td f="td" class="text-center"><input type="checkbox" f="checkbox"></td>
+                        <td f="td">用户服务</td>
+                        <td f="td">rest</td>
+                        <td f="td">订单服务信息</td>
+                        <td f="td">2018-11-14 17:01</td>
+                        <td f="td" class="text-primary"><a href="#none" f="a" class="mgr-sm text-primary" onclick="$('#addRole').modal();">修改</a></td>
+                    </tr>
+                    <tr f="tr" name="tr" id="tr">
+                        <td f="td" class="text-center"><input type="checkbox" f="checkbox"></td>
+                        <td f="td">用户服务</td>
+                        <td f="td">rest</td>
+                        <td f="td">订单服务信息</td>
+                        <td f="td">2018-11-14 17:01</td>
+                        <td f="td" class="text-primary"><a href="#none" f="a" class="mgr-sm text-primary" onclick="$('#addRole').modal();">修改</a></td>
+                    </tr>
+                    <tr f="tr" name="tr" id="tr">
+                        <td f="td" class="text-center"><input type="checkbox" f="checkbox"></td>
+                        <td f="td">用户服务</td>
+                        <td f="td">rest</td>
+                        <td f="td">订单服务信息</td>
+                        <td f="td">2018-11-14 17:01</td>
+                        <td f="td" class="text-primary"><a href="#none" f="a" class="mgr-sm text-primary" onclick="$('#addRole').modal();">修改</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul class="ui-page pull-right mgt-big" f="page">
+            <li>共 34 条记录，每页 10 条</li>
+            <li><a href="#none">&lt;&lt;</a></li>
+            <li><a href="#none">&lt;</a></li>
+            <li><a href="#none">1</a></li>
+            <li class="active"><a href="#none">2</a></li>
+            <li><a href="#none">3</a></li>
+            <li><a href="#none">4</a></li>
+            <li><a href="#none">&gt;</a></li>
+            <li><a href="#none">&gt;&gt;</a></li>
+            <li>
+                <select class="ui-text text-sm ver-t">
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                     <option value="4">4</option>
+                </select>
+            </li>
+        </ul>
+    </div>
+    <!--添加弹框-->
+    <div class="modal fade" id="resourcesModal" tabindex="-1" role="dialog" aria-labelledby="addroleLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="addroleLabel">添加资源</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="resourcesForm">
+                        <div class="form-group">
+                            <label class="control-label">资源名称:</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="请输入资源名称">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">父资源ID:</label>
+                            <input type="text" class="form-control" id="parentId" name="parentid" placeholder="请输入父资源ID">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">资源链接:</label>
+                            <input type="text" class="form-control" id="resUrl" name="resurl" placeholder="请输入资源链接">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">资源类型:</label>
+                            <select class="form-control" name="type" id="type">
+                             	<option value="1">一级菜单</option>
+                                <option value="2">二级菜单</option>
+                                <option value="3">三级菜单</option>
+                        </select>
+                        </div>
+                        <!--  <div class="form-group">
+                        <label class="control-label">排序:</label>
+                        <input type="text" class="form-control" id="sort" name="sort"  placeholder="请输入排序">
+                    </div> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="addResources();" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/添加弹框-->
+</body>
+<script type="text/html">
+</script>
+<script src="../../pub-ui/js/jquery-1.11.3.min.js"></script>
+<script src="../../pub-ui/js/interface.min.js"></script>
+<script src="../../pub-ui/plugins/artDialog/dialog-plus.js"></script>
+<script src="../../pub-script/userManage.js"></script>
+</html>

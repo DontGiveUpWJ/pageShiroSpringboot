@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>可视化编辑</title>
+    <link href="../../pub-ui/css/interface.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/app.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="../../pub-ui/js/ieonly/html5shiv.js"></script>
+        <script src="../../pub-ui/js/ieonly/respond.js"></script>
+        <script src="../../pub-ui/js/ieonly/excanvas.js"></script>
+    <![endif]-->
+</head>
+<body class="bg-graywhite">
+    <div f="div" class="bg-white mgt-md border-top">
+        <div f="div" class="pdr-lg pdl-lg organize-head"><span f="span" class="fz-16 fwb">Node-RED</span>
+            <div f="div" class="pull-right">
+                <select class="form-control inline-block font-sm" f="select">
+                    <option value="">请选择</option>
+                    <option value="1">选项一</option>
+                    <option value="2">选项二</option>
+                    <option value="3">选项三</option>
+                </select>
+                <div class="inline mgl-lg relative">
+                    <i class="font-icon font-icon-navicon font-lg text-muted vm cursor-pointer dropdown-toggle" f="font-icon" data-toggle="dropdown"></i>
+                    <ul class="dropdown-menu dropleft" id="js_viewMenu">
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">显示</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#" class="checkable checked js_display">显示侧边栏</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">显示名称</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">导入</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">本地导入</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">从其他服务导入</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">导出</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">导出到本地</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">导出到其他服务</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a tabindex="-1" href="#">查找流程</a></li>
+                            <li><a tabindex="-1" href="#">修改节点配置</a></li>
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">流程</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">流程 A</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">流程 B</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">流程 C</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">子流程</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">暂无</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a tabindex="-1" href="#">节点管理</a></li>
+                            <li><a tabindex="-1" href="#">设置</a></li>
+                            <li><a tabindex="-1" href="#">键盘快捷方式</a></li>
+                            <li><a tabindex="-1" href="#">Node-RED website</a></li>
+                            <li><a tabindex="-1" href="#">v0.18.7</a></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+        <div class="organize-wrap border-top font-sm" f="div">
+            <div class="layout-container organize-layout" f="layout">
+                <div class="col-aside border-right organize-left" f="div" id="organize-left">
+                    <div class="input-group input-noborder" f="input-group">
+                        <span class="input-group-addon" f=""><i class="font-icon font-icon-search text-muted" f="font-icon"></i></span>
+                        <input type="text" class="form-control font-sm" f="input" placeholder="过滤节点">
+                    </div>
+                    <div class="panel-group" id="collapse_2" data-toggle="collapse" aria-multiselectable="false" f="collapse" style="margin-top:-1px;">
+                        <div class="panel panel-default" f="panel">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                <a class="collapsed" href="#collapse_2_1" data-toggle="collapse" data-parent=".panel-group" aria-expanded="false" f="a">输入<i class="font-icon text-muted pull-right" f="font-icon"></i></a>
+            </h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="collapse_2_1" aria-expanded="false" f="" style="height: 0px;">
+                                <div class="panel-body" f="div"></div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" f="panel">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                <a class="collapsed" href="#collapse_2_2" data-toggle="collapse" data-parent=".panel-group" aria-expanded="false" f="a">输出<i class="font-icon text-muted pull-right" f="font-icon"></i></a>
+            </h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="collapse_2_2" aria-expanded="false" f="" style="height: 0px;">
+                                <div class="panel-body" f="div"></div>
+                            </div>
+                        </div>                      
+                    </div>
+                </div>
+                <div class="col-main organize-main" f="div">
+                    <div class="pub-tab" id="js_flowTab">
+                        <a class="ptab-left"></a>
+                        <a class="ptab-right"></a>
+                        <i class="add-tag pull-right" f="font-icon">＋</i>
+                        <div class="ptab-wrap">
+                            <ul class="ptab-list">
+                                <li class="active"><span f="span">流程1</span><i class="del"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pub-tab-cont" id="js_flowTabCont">
+                        <div class="tab-item active">1</div>
+                    </div>
+                </div>
+                <div class="col-aside border-left organize-right" f="div" id="organize-right">
+                    <div class="clearfix" f="tabs">
+                        <ul class="nav nav-tabs nav-justified" role="tablist" f="nav">
+                            <li role="presentation" class="active"><a href="#tabs_4_1" role="tab" data-toggle="tab" aria-expanded="true" f="a">信息</a></li>
+                            <li role="presentation"><a href="#tabs_4_2" role="tab" data-toggle="tab" aria-expanded="false" f="a">测试窗口</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="tabs_4_1" f="div">
+                                <div class="panel-group" id="collapse_4" data-toggle="collapse" f="collapse" style="margin-top:-1px;">
+                                    <div class="panel panel-default" f="panel">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                <a href="#collapse_4_1" data-toggle="collapse" data-parent=".panel-group" aria-expanded="true" f="a">信息<i class="font-icon text-muted pull-right" f="font-icon"></i></a>
+            </h4>
+                                        </div>
+                                        <div class="panel-collapse collapse in" id="collapse_4_1" aria-expanded="true" f="" style="">
+                                            <div class="panel-body" f="div">
+                                                <table class="table mgb-0 table-bordered" f="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>流程</td>
+                                                            <td>f4cfd7d9.b679d8</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>名称</td>
+                                                            <td>流程1</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>状态</td>
+                                                            <td>启用</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default" f="panel">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                <a class="collapsed" href="#collapse_4_2" data-toggle="collapse" data-parent=".panel-group" aria-expanded="false" f="a">流程描述<i class="font-icon text-muted pull-right" f="font-icon"></i></a>
+            </h4>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="collapse_4_2" aria-expanded="false" f="">
+                                            <div class="panel-body" f="div"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="tabs_4_2" f="div">测试窗口</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../pub-ui/js/jquery-1.11.3.min.js"></script>
+<script src="../../pub-ui/js/interface.min.js"></script>
+<script src="../../pub-script/common.js"></script>
+<script src="../../pub-script/viewEdit.js"></script>
+</html>

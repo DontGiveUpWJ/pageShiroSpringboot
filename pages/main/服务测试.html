@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>服务测试</title>
+    <link href="../../pub-ui/css/interface.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/app.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="../../pub-ui/js/ieonly/html5shiv.js"></script>
+        <script src="../../pub-ui/js/ieonly/respond.js"></script>
+        <script src="../../pub-ui/js/ieonly/excanvas.js"></script>
+    <![endif]-->
+</head>
+<body class="bg-graywhite">
+    <div f="div" class="bg-white mgt-md border-top">
+        <div f="div" class="pdr-lg pdl-lg organize-head font-sm">
+            <div class="inline relative">
+                <i class="font-icon font-icon-navicon font-lg text-muted vm cursor-pointer dropdown-toggle" f="font-icon" data-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a tabindex="-1" href="#">一级菜单</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a tabindex="-1" href="#">二级菜单</a>
+                            </li>
+                            <li>
+                                <a tabindex="-1" href="#">二级菜单</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a tabindex="-1" href="#">一级菜单</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a tabindex="-1" href="#">二级菜单</a>
+                            </li>
+                            <li>
+                                <a tabindex="-1" href="#">二级菜单</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                </ul>
+            </div>
+            <div class="inline relative mgl-big">
+                <button class="btn borderless btn-sm text-muted dropdown-toggle" type="button" f="btn" data-toggle="dropdown" aria-expanded="false">增加身份认证<i class="caret mgl-sm"></i></button>
+                <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                </ul>
+            </div>
+            <div class="inline relative">
+                <button class="btn borderless btn-sm text-muted dropdown-toggle" type="button" f="btn" data-toggle="dropdown" aria-expanded="false">增加HTTP头字段<i class="caret mgl-sm"></i></button>
+                <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                </ul>
+            </div>
+            <div class="inline relative">
+                <button class="btn borderless btn-sm text-muted dropdown-toggle" type="button" f="btn" data-toggle="dropdown" aria-expanded="false">快速跳转<i class="caret mgl-sm"></i></button>
+                <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                    <li><a tabindex="-1" href="#">一级菜单</a></li>
+                </ul>
+            </div>
+            <div f="div" class="pull-right">
+                <div class="inline relative">
+                    <button class="btn borderless btn-sm text-muted dropdown-toggle" type="button" f="btn" data-toggle="dropdown" aria-expanded="false">收藏的请求<i class="caret mgl-sm"></i></button>
+                    <ul class="dropdown-menu dropleft">
+                        <li><a tabindex="-1" href="#">一级菜单</a></li>
+                        <li><a tabindex="-1" href="#">一级菜单</a></li>
+                        <li><a tabindex="-1" href="#">一级菜单</a></li>
+                    </ul>
+                </div>
+                <button class="btn borderless btn-sm text-muted" type="button" f="btn">数据迁移</button>
+                <button class="btn borderless btn-sm text-muted" type="button" f="btn">RESTClient</button>
+            </div>
+        </div>
+        <div class="organize-wrap border-top font-sm" f="div">
+            <div f="div" class="pdr-lg pdl-lg">
+                <h3 f="h" class="mgt-0 font-md pdt-big mgb-big">[—] HTTP请求</h3>
+                <div f="div" class="pdl-big">
+                    <div f="div" class="flex-box">
+                        <label f="label-select" class="mgb-0">
+                            <span f="span">请求方法：</span>
+                            <select class="form-control inline-block font-sm" f="select">
+                                <option value="">GET</option>
+                                <option value="1">POST</option>
+                                <option value="2">PUT</option>
+                                <option value="3">DELETE</option>
+                            </select>
+                        </label>
+                        <div f="" class="mgl-huge flex-1 flex-box align-center">
+                            <span f="span">网址：</span>
+                            <div class="input-group flex-1" f="input-group">
+                                <input type="text" class="form-control font-sm" f="input">
+                                <span class="input-group-addon cursor-pointer bg-white input-fn-icon star" title="收藏" id="js_collect"><i class="font-icon" data-icon="" data-icon-active="" f="font-icon"></i></span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary mgl-md" type="button" f="btn-icon"><i class="font-icon font-icon-paper-plane-o" f="font-icon"></i>&nbsp;发送</button>
+                    </div>
+                    <h4 f="h" class="font-md text-muted mgt-big">正文</h4><textarea class="form-control font-sm" rows="4" f="textarea" placeholder="请求正文内容"></textarea></div>
+            </div>
+            <div f="div" class="pdr-lg pdl-lg">
+                <h3 f="h" class="font-md mgb-big">[—] HTTP响应</h3>
+                <div f="div" class="pdl-big">
+                    <div f="div">
+                        <input type="text" class="form-control inline-block font-sm" f="input" placeholder="HTTP头字段">
+                        <span f="span" class="pdl-md text-danger">HTTP响应内容</span>
+                    </div>
+                    <textarea class="form-control mgt-md font-sm" f="textarea"></textarea>
+                </div>
+            </div>
+            <div f="div" class="pdr-lg pdl-lg">
+                <h3 f="h" class="font-md mgb-big">[—] CURL命令</h3>
+                <div f="div" class="pdl-big">
+                    <h4 f="h" class="font-md text-muted mgt-big">命令内容</h4>
+                    <textarea class="form-control mgt-md font-sm placeholder-red" f="textarea" placeholder="CURL命令"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../pub-ui/js/jquery-1.11.3.min.js"></script>
+<script src="../../pub-ui/js/interface.min.js"></script>
+<script src="../../pub-script/serviceTest.js"></script>
+</html>

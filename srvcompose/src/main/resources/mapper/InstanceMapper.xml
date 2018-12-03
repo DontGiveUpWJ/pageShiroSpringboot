@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sitech.paas.mapper.InstanceMapper">
+  <resultMap id="BaseResultMap" type="com.sitech.paas.entity.Instance">
+    <id column="cluster_id" jdbcType="INTEGER" property="id" />
+    <result column="cluster_ip" jdbcType="VARCHAR" property="ip" />
+    <result column="cluster_port" jdbcType="VARCHAR" property="port" />
+    <result column="user_name" jdbcType="VARCHAR" property="username" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="password" />
+    <result column="file_name" jdbcType="VARCHAR" property="filename" />
+    <result column="file_path" jdbcType="VARCHAR" property="filepath" />
+    <result column="view_url" jdbcType="VARCHAR" property="url" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_valid" jdbcType="INTEGER" property="isValid" />
+    <result column="res_create" jdbcType="VARCHAR" property="resCreate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="clusterColumns">
+    cluster_id,cluster_id,cluster_port,user_name,user_pwd,file_name,file_path,view_url,
+    type,status,is_valid,res_create,create_time,update_time
+  </sql>
+
+  <select id="selectAllOrderByType" resultMap="BaseResultMap">
+    SELECT
+      <include refid="clusterColumns"></include>
+    FROM
+      cluster_info
+    ORDER BY
+      type
+  </select>
+
+  <select id="selectByType" resultMap="BaseResultMap">
+    SELECT
+      <include refid="clusterColumns"></include>
+    FROM
+      cluster_info
+    WHERE
+      type = #{type}
+  </select>
+
+  <update id="disabledById">
+    UPDATE cluster_info SET is_valid = 1 WHERE cluster_id =#{id}
+  </update>
+
+  <update id="enabledById">
+    UPDATE cluster_info SET is_valid = 0 WHERE cluster_id =#{id}
+  </update>
+
+</mapper>

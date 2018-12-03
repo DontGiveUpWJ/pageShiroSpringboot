@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>流程图DEMO</title>
+<!--[if lt IE 9]>
+<?import namespace="v" implementation="#default#VML" ?>
+<![endif]-->
+<link href="../../pub-script/node/codebase/GooFlow.css" rel="stylesheet">
+<link href="../../pub-script/node/default.css" rel="stylesheet">
+
+<script src="../../pub-script/node/child.js"></script>
+<script src="../../pub-script/node/plugin/jquery.min.js"></script>
+<script src="../../pub-script/node/codebase/GooFunc.js"></script>
+<script src="../../pub-script/node/plugin/json2.js"></script>
+<script src="../../pub-script/node/codebase/GooFlow.js"></script>
+
+
+<script type="text/javascript">
+GooFlow.prototype.color={
+		  main:"#20A0FF",   //绘图器HEAD/图标的颜色
+		  font:"#15428B",   //默认文字颜色
+		  node:"#FFB6C1",   //结点背景色
+		  line:"#1D8CE0",   //连线/结点选中时边框颜色
+		  lineFont:"#15428B",   //连线上文字的颜色（优先级大于“默认文字颜色”）
+		  mark:"#ff8800",   //连线被选中/元素都标注时颜色
+		  mix:"#B6F700",   //复合结点自定义背景颜色
+		  mixFont:"#777"   //复合结点自定义文字颜色
+		};
+
+var property={
+	width:1800,
+	height:1000,
+	toolBtns:["wj","catchn","http","debug","res","func","delay","trigger","dubbo","req","swit","change","split","join1","json","xml",/* "task","node","chat","state","plug","join","fork","complex mix" */],
+	haveHead:true,
+	headBtns:["new","open","save","undo","redo","reload"],//如果haveHead=true，则定义HEAD区的按钮
+	haveTool:true,
+	haveGroup:true,
+	useOperStack:true
+};
+var remark={
+	cursor:"选择指针",
+	direct:"转换连线",
+	start:"开始结点",
+	"end round":"结束结点",
+	"task round":"任务结点",
+	node:"自动结点",
+	wj:"inject",
+	catchn:"catch",
+	http:"http",
+	debug:"debug",
+	res:"http response",
+	func:"function",
+	delay:"delay",
+	trigger:"trigger",
+	dubbo:"dubbo",
+	req:"req",
+	swit:"switch",
+	change:"change",
+	split:"split",
+	join1:"join",
+	json:"json",
+	xml:"xml",
+	chat:"决策结点",
+	state:"状态结点",
+	plug:"附加插件",
+	fork:"分支结点",
+	"join":"联合结点",
+	"complex mix":"复合结点",
+	group:"组织划分框编辑开关"
+};
+var ind = getUrlQueryString('nid');
+
+	
+function getUrlQueryString(names, urls) {
+	urls = urls || window.location.href;
+	urls && urls.indexOf("?") > -1 ? urls = urls
+			.substring(urls.indexOf("?") + 1) : "";
+	var reg = new RegExp("(^|&)" + names + "=([^&]*)(&|$)", "i");
+	var r = urls ? urls.match(reg) : window.location.search.substr(1)
+			.match(reg);
+	if (r != null && r[2] != "")
+		return unescape(r[2]);
+	return null;
+};
+var demo;
+$(document).ready(function(){
+	demo=$.createGooFlow($("#demo"),property);
+	demo.setNodeRemarks(remark);
+	//demo.onItemDel=function(id,type){
+	//	return confirm("确定要删除该单元吗?");
+	//}
+	
+	var nid=ind;
+	var jsondata1;
+	 $.ajax({
+         async:false,
+         type : "POST",
+         data:{nid:nid},
+         url: '/serviceBP/staticNode/findNodeById',
+         dataType:'json',
+         success: function(data){
+        	 jsondata1 = data.data.flowData;
+        	 
+         }
+     });
+	 var a = jsondata1;
+	 var showdata = JSON.parse(jsondata1);
+	 var b = jsondata;
+	demo.loadData(showdata);
+	demo.onBtnSaveClick = function(){
+		   var flowdata = JSON.stringify(demo.exportData());
+		   $.get("/serviceBP/staticNode/StaticNodeUpdate",{'nid':nid,'flowData':flowdata},function(data){
+			    alert(data.data); 
+		   },"json");
+		   }
+});
+
+
+var out;
+function Export(){
+	alert(JSON.stringify(demo.exportData()));
+    document.getElementById("result").value=JSON.stringify(demo.exportData());
+}
+
+
+
+</script>
+<style type="text/css">
+.GooFlow_work{
+width:100px}
+.GooFlow_tool_btn i .ico_wj{
+    display: block;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+.GooFlow .ico_wj {
+	background:url(../../pub-script/node/node/inject.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_http {
+	background:url(../../pub-script/node/node/http.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_catchn {
+	background:url(../../pub-script/node/node/catch.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_debug {
+	background:url(../../pub-script/node/node/debugLeft.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+
+.GooFlow .ico_res {
+	background:url(../../pub-script/node/node/resLeft.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_func {
+	background:url(../../pub-script/node/node/function.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_delay {
+	background:url(../../pub-script/node/node/delay.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_trigger {
+	background:url(../../pub-script/node/node/trigger.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_dubbo {
+	background:url(../../pub-script/node/node/dubbo.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_req {
+	background:url(../../pub-script/node/node/req.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_swit {
+	background:url(../../pub-script/node/node/switch.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_change {
+	background:url(../../pub-script/node/node/change.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+
+.GooFlow .ico_split {
+	background:url(../../pub-script/node/node/split.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_join1 {
+	background:url(../../pub-script/node/node/join.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_json {
+	background:url(../../pub-script/node/node/json.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+.GooFlow .ico_xml {
+	background:url(../../pub-script/node/node/xml.png) no-repeat /* 1px 1px */;
+	padding:0px;
+	margin:0px;
+	background-size:87px;
+}
+</style>
+</head>
+<body>
+<input type="hidden" id="sName"/>
+<div id="demo" style="margin:10px"></div>
+<input id="submit" type="button" value='导出结果' onclick="Export()"/>
+<textarea id="result" row="6"></textarea>
+</body>
+</html>

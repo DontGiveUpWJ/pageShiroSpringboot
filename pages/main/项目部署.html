@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Node-Red 自动化部署</title>
+    <link href="../../pub-ui/css/interface.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../pub-ui/plugins/artDialog/ui-dialog.css" rel="stylesheet">
+    <link href="../../pub-ui/css/app.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="../../pub-ui/js/ieonly/html5shiv.js"></script>
+        <script src="../../pub-ui/js/ieonly/respond.js"></script>
+        <script src="../../pub-ui/js/ieonly/excanvas.js"></script>
+    <![endif]-->
+</head>
+<body class="bg-graywhite font-sm">
+<div>
+	<h2>1、基础环境</h2>
+	<h3>(1)NodeJS下载安装</h3>
+	<h4>下载地址：https://nodejs.org/en/download/</h4>
+	<h3>(2)检验是否安装成功</h3>
+	<h4>在Root权限下操作：<br/>ln -s /nodejs路径/bin/node /usr/local/bin/node</h4>
+	<h4>ln -s  /nodejs路径/bin/node /usr/local/bin/npm <br/>使用node -v 和 npm -v查看是否安装成功。</h4>
+	<img src="../../pub-pic/node/1.jpg" alt="" f="img">
+</div>
+<div>
+	<h2>2、node-red 部署</h2>
+	<h3>(1)部署过程</h3>
+	<h4>上传提供的编译过的node-red应用，启动其中的脚本。启动命令：sh node-red-start.sh start red</h4>
+	<img src="../../pub-pic/node/2.jpg" alt="" f="img">
+	<h4>查看应用状态：sh node-red-start.sh list</h4>
+	<img src="../../pub-pic/node/3.jpg" alt="" f="img">
+	<h4>停止应用：sh node-red-start.sh stop id|name</h4>
+	<h4>①根据id停止</h4>
+	<img src="../../pub-pic/node/4.jpg" alt="" f="img">
+	<h4>②根据name停止</h4>
+	<img src="../../pub-pic/node/5.jpg" alt="" f="img">
+	<h4>③停止所有应用：sh node-red-start.sh stop all</h4>
+	<img src="../../pub-pic/node/6.jpg" alt="" f="img">
+</div>
+
+<div>
+	<h2>2、node-red 自动化部署的构建过程</h2>
+	<h3>(1)部署要求</h3>
+	<h4>Linux 主机下安装好node 环境</h4>
+	<h4>该Linux主机可以连接外网</h4>
+	<h4>安装编译工具及库文件：yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel</h4>
+	<h3>(2)node-red下载</h3>
+	<h4>下载地址：https://github.com/node-red/node-red/releases/tag/0.18.7 。将下载好的node-red从本地上传到主机</h4>
+	<h3>(3)解压node-red</h3>
+	<h4>使用命令：tar -zxcf node-red-0.18.1.tar</h4>
+	<img src="../../pub-pic/node/7.jpg" alt="" f="img">
+	<h3>(4)下载node-red需要的依赖包</h3>
+	<h4>①安装cnpm命令</h4>
+	<h5>由于nodejs 自带的npm 命令为国外镜像所以下载过程中可能会出现失败，
+		所以推荐安装国内镜像命令cnpm.执行如下操作即可：
+		npm install -g cnpm --registry=https://registry.npm.taobao.org
+		同时把cnpm 命令添加到环境变量目录下
+		ln -s /nodeJs目录/bin/cnpm /usr/local/bin/cnpm
+		检查 cnpm -v
+	</h5>
+	<img src="../../pub-pic/node/8.jpg" alt="" f="img">
+	<h4>②node-red依赖下载并编译</h4>
+	<h5></h5>
+	</div>
+
+
+
+
+   
+NodeJs 安装
+下载 、解压
+Root 权限下操作
+ln -s /nodejs路径/bin/node /usr/local/bin/node
+ln -s  /nodejs路径/bin/node /usr/local/bin/npm
+检验node 安装是否成功
+node -v
+npm -v
+
+</body>
+
+<script src="../../pub-ui/js/jquery-1.11.3.min.js"></script>
+<script src="../../pub-ui/js/interface.min.js"></script>
+<script src="../../pub-ui/plugins/artDialog/dialog-plus.js"></script>
+</html>

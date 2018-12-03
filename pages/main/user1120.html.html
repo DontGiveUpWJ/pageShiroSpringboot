@@ -1,0 +1,79 @@
+$(function(){
+	var html = $('#tpl-user-add').html();
+    //添加用户的js
+    $('#user-add').click(function(){
+    	dialog({
+            title: '添加用户',
+            content: html,
+            okValue: '确定',  
+            ok: function () {},	//确定回调
+            cancelValue: '取消', 
+            cancel: function () {}	//取消回调
+    	}).show();
+    });
+    
+    //修改用户的js
+	var editTpl = $('#tpl-edit').html();
+    $('#table').on('click','.js_edit',function(event){
+        event.preventDefault();
+    	dialog({
+            title: '修改',
+            content: editTpl,
+            okValue: '确定',
+            ok: function () {
+                var editForm = $('#edit-form');
+            	 var username = editForm.find('.js_userName').val();
+                alert(username);
+            },	//确定回调
+            cancelValue: '取消', 
+            cancel: function () {},	//取消回调
+            onshow: function(){		//弹窗显示回调
+            	var editForm = $('#edit-form');
+                editForm.find('.js_userName').val("wj1");
+            	editForm.find('.js_pwd').val('1234');
+                var username = editForm.find('.js_userName').val();
+                if(username == "wj"){
+                    editForm.find('[name="radio-box_3"][value="'+ 1 +'"]')[0].checked = true;
+                }else{
+                    editForm.find('[name="radio-box_3"][value="'+ 0 +'"]')[0].checked = true;
+                }
+            	
+            }
+    	}).show();
+    });
+    
+    //查看用户的js
+  var lookTpl = $('#tpl-look').html();
+    $('#table').on('click','.js_look',function(event){
+        event.preventDefault();
+    	dialog({
+            title: '查看',
+            content: lookTpl,
+            okValue: '确定',
+            ok: function () {
+                var editForm = $('#edit-form');
+            	 var username = editForm.find('.js_userName').val();
+                alert(username);
+            },	//确定回调
+            cancelValue: '取消', 
+            cancel: function () {},	//取消回调
+            onshow: function(){		//弹窗显示回调
+            	var editForm = $('#edit-form');
+                editForm.find('.js_userName').val("董开旺");
+            	editForm.find('.js_pwd').val('董开旺是笨蛋');
+                var username = editForm.find('.js_userName').val();
+                if(username == "wj"){
+                    editForm.find('[name="radio-box_3"][value="'+ 1 +'"]')[0].checked = true;
+                }else{
+                    editForm.find('[name="radio-box_3"][value="'+ 0 +'"]')[0].checked = true;
+                }
+            	
+            }
+    	}).show();
+    });
+    
+    
+    
+});
+
+

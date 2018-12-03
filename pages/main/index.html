@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>index</title>
+    <link href="../../pub-ui/css/interface.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/app.css" rel="stylesheet">
+	<link href="../../pub-ui/css/zTreeStyle.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="../../pub-ui/js/ieonly/html5shiv.js"></script>
+        <script src="../../pub-ui/js/ieonly/respond.js"></script>
+        <script src="../../pub-ui/js/ieonly/excanvas.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="pub-head pdr-huge" f="div"><a href="index.html" f="a" class="fz-16 color-white">思特奇服务编排平台</a>
+        <div f="div" class="pull-right pdl-huge font-sm">
+            <a href="helpOnline.html" f="a" class="icon help" target="_blank">在线帮助</a>
+			<p f="a" class="icon user" id = "userName">111</p>
+			<a href="javascript:void(0)" f="a" class="icon help" onclick = "logout();" target="_blank">退出</a>
+			<!--<a href="/serviceBP/logout" f="a" class="icon help"  target="_blank">退出</a>-->
+            <!--<a href="###" f="a" class="icon user" id = "userName"><p></p></a>-->
+        </div>
+    </div>
+    <div class="pub-side">
+        <div class="side-wrap">
+            <ul class="side-nav js_sideNav" id = "demo-list" f="side-nav">
+                <!--<li class="open"><a class="nav-item platform" f="a">平台管理<i class="font-icon"></i></a>-->
+                <li><a class="nav-item platform" f="a">平台管理<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="用户管理.html" class="nav-item" f="a">用户管理</a></li>
+                        <li><a href="角色管理.html" class="nav-item" f="a">角色管理</a></li>
+                        <li><a href="resources.html" class="nav-item" f="a">资源管理</a></li>
+                        <li><a href="javascript:void(0)" class="nav-item" f="a">在线帮助</a></li>
+                        <li><a href="javascript:void(0)" class="nav-item" f="a">平台部署</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-item orchestration" f="a">服务编排<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="可视化编辑.html" class="nav-item" f="a">可视化编排</a></li>
+                    </ul>
+                </li>
+				
+				
+				
+                <li><a class="nav-item service" f="a">服务管理<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li class="submenu"><a href="javascript:void(0)" class="nav-item " f="a">服务目录<i class="font-icon"></i></a>
+                            <ul>
+                                <li><a href="原子服务信息.html" class="nav-item" f="a">原子服务信息</a></li>
+                                <li><a href="流程服务.html" class="nav-item" f="a">编排服务信息</a></li>
+                                <li><a href="服务信息同步.html" class="nav-item" f="a">服务信息同步</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu"><a href="服务关系.html" class="nav-item" f="a">服务关系<i class="font-icon"></i></a>
+                            <ul>
+                                <li><a href="服务关系.html" class="nav-item" f="a">服务全景</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu"><a href="javascript:void(0)" class="nav-item" f="a">服务管控<i class="font-icon"></i></a>
+                            <ul>
+                                <li><a href="javascript:void('0')" class="nav-item" f="a">原子服务</a></li>
+                                <li><a href="javascript:void('0')" class="nav-item" f="a">编排服务</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+				
+				
+				
+                <li class="open"><a class="nav-item capability" f="a">能力提供<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li class="submenu open"><a href="javascript:void(0)" class="nav-item" f="a">集群管理<i class="font-icon"></i></a>
+                            <ul>
+                                <li><a href="集群配置.html" class="nav-item" f="a">集群配置</a></li>
+                                <li><a href="实例监控.html" class="nav-item" f="a">实例监控</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="nav-item monitoring" f="a">监控分析<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li class="submenu"><a href="javascript:void(0)" class="nav-item" f="a">运营分析<i class="font-icon"></i></a>
+                            <ul>
+                                <li><a href="javascript:void('0')" class="nav-item" f="a">调用链路展示</a></li>
+                                <li><a href="javascript:void('0')" class="nav-item" f="a">日调用分析</a></li>
+                                <li><a href="javascript:void('0')" class="nav-item" f="a">月调用分析</a></li>
+                                <li><a href="javascript:void('0')" class="nav-item" f="a">调用趋势分析</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pub-main">
+        <div class="pub-tab js_mainTab">
+            <a class="ptab-left"></a>
+            <a class="ptab-right"></a>
+            <div class="ptab-wrap">
+                <ul class="ptab-list js_tabList">
+                    <li data-url="用户管理.html" class="active">用户管理<i class="del"></i></li>
+                    <!--<li data-url="角色管理.html">角色管理<i class="del"></i></li>
+                    <li data-url="resources.html">资源管理<i class="del"></i></li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="pmain-frame-box js_iframeList" f="div">
+            <iframe src="用户管理.html" class="pub-iframe" style="display: block;"></iframe>
+            <!--<iframe src="角色管理.html" class="pub-iframe" style="display: none;"></iframe><iframe src="resources.html" class="pub-iframe" style="display: none;"></iframe>--></div>
+    </div>
+</body>
+<script src="../../pub-ui/js/jquery-1.11.3.min.js"></script>
+<script src="../../pub-ui/js/interface.min.js"></script>
+<script src="../../pub-script/common.js"></script>
+<script src="../../pub-script/index.js"></script>
+<script src="../../pub-script/menu.js"></script>
+<script src="../../pub-script/login.js"></script>
+<script src="../../pub-script/pageWJ/lll.js"></script>
+
+<script type="text/javascript">
+var ind = getUrlQueryString('uuu');
+$("#userName").html(ind);
+	
+function getUrlQueryString(names, urls) {
+	urls = urls || window.location.href;
+	urls && urls.indexOf("?") > -1 ? urls = urls
+			.substring(urls.indexOf("?") + 1) : "";
+	var reg = new RegExp("(^|&)" + names + "=([^&]*)(&|$)", "i");
+	var r = urls ? urls.match(reg) : window.location.search.substr(1)
+			.match(reg);
+	if (r != null && r[2] != "")
+		return unescape(r[2]);
+	return null;
+};
+
+function logout(){
+
+		window.location.href = "login.html";
+}
+
+</script>
+</html>

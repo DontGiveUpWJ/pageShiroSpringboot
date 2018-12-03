@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sitech.paas.mapper.MircsFlowMapper" >
+  <resultMap id="BaseResultMap" type="com.sitech.paas.entity.MicroSFlow" >
+    <id column="rel_id" property="id" jdbcType="INTEGER" />
+    <result column="com_srv_id" property="httpinid" jdbcType="VARCHAR" />
+    <result column="atom_srv_sign" property="uniqueid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rel_id, com_srv_id, atom_srv_sign
+  </sql>
+
+  <select id="getCount" resultType="java.lang.Integer" parameterType="map" >
+    select
+     count(1)
+    from atom_com_rel
+    where
+      com_srv_id= #{httpinId}
+      and atom_srv_sign= #{uniqueId}
+  </select>
+  
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from atom_com_rel
+  </select>
+
+  <select id="selectByUniqueId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from atom_com_rel
+    where atom_srv_sign = #{uniqueId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from atom_com_rel
+    where rel_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from atom_com_rel
+    where rel_id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.sitech.paas.entity.MicroSFlow" >
+    insert into atom_com_rel (rel_id, com_srv_id, atom_srv_sign
+      )
+    values (#{id,jdbcType=INTEGER}, #{httpinid,jdbcType=VARCHAR}, #{uniqueid,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.sitech.paas.entity.MicroSFlow" >
+    insert into atom_com_rel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        rel_id,
+      </if>
+      <if test="httpinid != null" >
+        com_srv_id,
+      </if>
+      <if test="uniqueid != null" >
+        atom_srv_sign,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="httpinid != null" >
+        #{httpinid,jdbcType=VARCHAR},
+      </if>
+      <if test="atom_srv_sign != null" >
+        #{uniqueid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.sitech.paas.entity.MicroSFlow" >
+    update atom_com_rel
+    <set >
+      <if test="httpinid != null" >
+        com_srv_id = #{httpinid,jdbcType=VARCHAR},
+      </if>
+      <if test="uniqueid != null" >
+        atom_srv_sign = #{uniqueid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rel_id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.sitech.paas.entity.MicroSFlow" >
+    update atom_com_rel
+    set com_srv_id = #{httpinid,jdbcType=VARCHAR},
+      atom_srv_sign = #{uniqueid,jdbcType=VARCHAR}
+    where rel_id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteBatch" parameterType="list">
+    delete from atom_com_rel
+    <foreach collection="list" item="item" separator=","
+             open="where atom_srv_sign in(" close=")">
+      #{item}
+    </foreach>
+  </delete>
+</mapper>

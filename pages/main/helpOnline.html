@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>帮助</title>
+    <link href="../../pub-ui/css/interface.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/app.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="../../pub-ui/js/ieonly/html5shiv.js"></script>
+        <script src="../../pub-ui/js/ieonly/respond.js"></script>
+        <script src="../../pub-ui/js/ieonly/excanvas.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="pub-head pdr-huge" f="div"><a href="#none" f="a" class="fz-16 color-white">思特奇服务编排平台</a>
+        <div f="div" class="pull-right pdl-huge font-sm"><!--
+            <a href="helpOnline.html" f="a" class="icon help" target="_blank">在线帮助</a>
+            <a href="###" f="a" class="icon user">wangjie_ac</a>-->
+        </div>
+    </div>
+    <div class="pub-side help-side">
+        <div class="side-wrap">
+            <ul class="side-nav" id="js_helpNav" f="side-nav">
+                <li><a class="nav-item platform" f="a">1. 输入-inject<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#1_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#1_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#1_3" class="nav-item" f="a">-节点属性</a></li>
+                    </ul>
+                </li>
+                <li ><a class="nav-item orchestration" f="a">2. 输入-http<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#2_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#2_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#2_3" class="nav-item" f="a">-节点属性</a></li>
+                    </ul>
+                </li>
+                <li ><a class="nav-item service" f="a">3. 输出-debug<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#3_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#3_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#3_3" class="nav-item" f="a">-节点属性</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-item httpresponse" f="a">4. 输出-httpresponse<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#4_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#4_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#4_3" class="nav-item" f="a">-节点属性</a></li>
+                    </ul>
+                </li>
+				<li><a class="nav-item capability" f="a">5. 功能-function<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#5_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#5_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#5_3" class="nav-item" f="a">-节点属性</a></li>
+                    </ul>
+                </li>
+				<li><a class="nav-item capability" f="a">6. 功能-dubbo2<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#6_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#6_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#6_3" class="nav-item" f="a">-节点属性</a></li>
+                    </ul>
+                </li>
+				<li><a class="nav-item capability" f="a">7. 功能-http request<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#7_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#7_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#7_3" class="nav-item" f="a">-节点属性</a></li>
+                    </ul>
+                </li>
+				<li><a class="nav-item capability" f="a">8. 功能-switch<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#8_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#8_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#8_3" class="nav-item" f="a">-节点属性</a></li>
+                        <li><a href="#8_4" class="nav-item" f="a">-节点测试</a></li>
+                    
+					</ul>
+                </li>
+				<li><a class="nav-item capability" f="a">9. 功能-change<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#9_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#9_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#9_3" class="nav-item" f="a">-节点属性</a></li>
+                   </ul>
+                </li>
+				<li><a class="nav-item capability" f="a">10. 功能-split<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#10_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#10_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#10_3" class="nav-item" f="a">-节点属性</a></li>
+                   </ul>
+                </li>
+				<li><a class="nav-item capability" f="a">11. 功能-join<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#11_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#11_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#11_3" class="nav-item" f="a">-节点属性</a></li>
+                   </ul>
+                </li>
+				<li><a class="nav-item capability" f="a">11. 功能-json<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#12_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#12_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#12_3" class="nav-item" f="a">-节点属性</a></li>
+                   </ul>
+                </li>
+				<li><a class="nav-item capability" f="a">11. 功能-xml<i class="font-icon"></i></a>
+                    <ul f="ul">
+                        <li><a href="#13_1" class="nav-item" f="a">-含义</a></li>
+                        <li><a href="#13_2" class="nav-item" f="a">-标签图标以及功能图</a></li>
+                        <li><a href="#13_3" class="nav-item" f="a">-节点属性</a></li>
+                   </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pub-main help-main" f="div" id="js_helpMain">
+        <ul f="ul" class="help-title fz-20">
+            <li>
+                <h2 f="h" class="fz-20 pdt-big">一. 输入-inject</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="1_1">含义</h3>
+                        <p f="p">手动或定期将消息注入流中。消息有效负载可以是各种类型，包括字符串，JavaScript对象或者当前时间。</p>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="1_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/help1.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="1_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)内容：inject标签的使用方式。其中flow是在当前流，global是在整个流中，文字列是输入文字，数字是输入阿拉伯数字，boolean是true或者false，json是输入json字符串，二进制流是输入二进制，时间戳是自1970年1月1日以来以毫秒为单位的当前时间的时间戳。</h5>
+						<img src="../../pub-pic/inject-neirong.jpg" alt="" f="img">
+						<h5  f="p" class="mgb-big">(2)主题：该标签的主题，存放在msg.topic中</h5>
+						<h5  f="p" class="mgb-big">(3)重复：消息的发送计划</h5>
+						<img src="../../pub-pic/inject-chongfu.jpg" alt="" f="img">
+						<h5  f="p" class="mgb-big">(4)名称：该节点的名称</h5>
+						
+					</li>
+                </ol>
+            </li>
+			
+			
+			
+			
+            <li>
+                <h2 f="h" class="fz-20 pdt-big">二. 输入-http</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="2_1">含义</h3>
+                        <h5 f="p">用于创建Web服务的HTTP端点。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="2_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/http.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="2_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)请求方式：发起HTTP请求的方式，其中包括GET、POST、DELETE、PUT、PATCH。</h5>
+						<img src="../../pub-pic/http-qingqiu.jpg" alt="" f="img">
+                        <h5 f="p" class="mgb-big">(2)URL：访问路径，可使用RESTful风格。路径示例: http://172.21.11.170:1880/node</h5>
+						<img src="../../pub-pic/http-url.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">(3)名称：该http节点的名称</h5>
+						<img src="../../pub-pic/http-name.jpg" alt="" f="img">
+					
+					
+					
+					</li>
+                </ol>
+            </li>
+			
+			<li>
+                <h2 f="h" class="fz-20 pdt-big">三. 输出-debug</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="3_1">含义</h3>
+                        <h5 f="p">用于测试节点在运行过程中的信息，可以输出节点的完整信息以及节点的payload信息（节点中的信息默认存储在msg.payload中）。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="3_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/debug.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="3_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)输出：①msg.payload:只输出debug连接节点的payload中的内容。②完整信息:会输出debug连接的节点的全部信息，如_msgid（节点的id），topic（节点的主题，默认为“”），payload（节点的值存储信息）</h5>
+						<img src="../../pub-pic/debug-out.jpg" alt="" f="img">
+                        <h5 f="p" class="mgb-big">(2)目标：①调试窗口：将节点信息输出到调试窗口。②Console：将节点信息输入的运行程序的IDE的控制台</h5>
+						<img src="../../pub-pic/debug-ceshi.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">(3)名称：该debug节点的名称</h5>
+					</li>
+                </ol>
+            </li>
+			
+			<li>
+                <h2 f="h" class="fz-20 pdt-big">四. 输出-httpresponse</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="4_1">含义</h3>
+                        <h5 f="p">将响应发送回从HTTP输入的节点</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="4_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/httpres.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="4_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)名称：该节点的名称</h5>
+						<img src="../../pub-pic/httpres-name.jpg" alt="" f="img">
+                        <h5 f="p" class="mgb-big">(2)状态码：响应返回的http状态码。默认值为200。</h5>
+						<img src="../../pub-pic/httpres-code.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">(3)Header：响应头的信息设置</h5>
+						<img src="../../pub-pic/httpres-header.jpg" alt="" f="img">
+					</li>
+                </ol>
+            </li>
+			
+			<li>
+                <h2 f="h" class="fz-20 pdt-big">五. 功能-function</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="5_1">含义</h3>
+                        <h5 f="p">一个JavaScript函数块，用户针对节点接收的消息运行。消息作为名为msg的JavaScript对象传入。它将具有包含消息正文的msg.payload属性。该函数返回一个消息对象（或多个消息对象），也可以选择不返回任何内容以暂停流。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="5_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/function.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="5_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)名称：该节点的名称</h5>
+						<img src="../../pub-pic/function-name.jpg" alt="" f="img">
+                        <h5 f="p" class="mgb-big">(2)函数：可以在其中完成JavaScript的代码块，节点中的信息默认都是在msg.payload里面，可以对其中的值进行获取以及修改，还可以进行新节点值的创建。</h5>
+						<img src="../../pub-pic/function-hanshu.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">(3)输出：节点输出的条数，默认是一条。</h5>
+						<img src="../../pub-pic/function-out.jpg" alt="" f="img">
+					</li>
+                </ol>
+            </li>
+			
+			<li>
+                <h2 f="h" class="fz-20 pdt-big">六. 功能-dubbo2</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="6_1">含义</h3>
+                        <h5 f="p">完成dubbo连接的组件。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="6_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/dubbo.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="6_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)name：该节点的名称</h5>
+                        <h5 f="p" class="mgb-big">(2)application：对应hsf的application即应用,可空。</h5>
+						<h5 f="p" class="mgb-big">(3)注册中心：zookeeper的注册中心地址，如127.0.0.1:2181，必填。</h5>
+						<h5 f="p" class="mgb-big">(4)Hsf版本：对应使用什么样子的hsf版本信息，必填。</h5>
+                        <h5 f="p" class="mgb-big">(5)服务接口：调用服务的接口名称。如:com.alibaba.dubbo.demo.DemoProvider，必填。</h5>
+						<h5 f="p" class="mgb-big">(6)服务版本：调用服务的指定版本对应服务的version中的值，如果服务没有配置version可为空，若配置必填。</h5>
+						<h5 f="p" class="mgb-big">(7)超时时间：调用的服务的超时时间默认系统默认5秒，可空。</h5>
+						<h5 f="p" class="mgb-big">(8)服务分组：如果服务分组对应服务group，可空。</h5>
+						<h5 f="p" class="mgb-big">(9)函数定义：接口调用的方法的模型，如：{sayHello(name){return [java.String(name)];}} 如果有多个方法可以使用逗号分开。</h5>
+                        <h5 f="p" class="mgb-big">(5)服务接口：调用服务的接口名称。如:com.alibaba.dubbo.demo.DemoProvider，必填。</h5>
+						<h5 f="p" class="mgb-big">(10)服务标识：原子服务的唯一标识。</h5>
+					</li>
+                </ol>
+            </li>
+			
+			<li>
+                <h2 f="h" class="fz-20 pdt-big">七. 功能-http request</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="7_1">含义</h3>
+                        <h5 f="p">发送http请求并响应。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="7_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/httpreq.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="7_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)请求方式：HTTP的请求方式，其中包括put，get，post，delete</h5>
+						<h5 f="p" class="mgb-big">(2)url：请求地址。例如http://127.0.0.1:8080/node。</h5>
+						<h5 f="p" class="mgb-big">(3)超时时间：请求的超时时间，系统默认输入10s。如果不输入或者输入为0，则为全局默认2分钟。</h5>
+					    <h5 f="p" class="mgb-big">(4)服务标识：标识该节点的引用的原子服务的唯一id，必填项。</h5>
+						<h5 f="p" class="mgb-big">(5)返回：返回结果的数据类型，其中包括UTF-8字符串。</h5>
+						<h5 f="p" class="mgb-big">(6)名称：该节点的名称。</h5>
+					</li>
+                </ol>
+            </li>
+			
+			<li>
+                <h2 f="h" class="fz-20 pdt-big">八. 功能-switch</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="8_1">含义</h3>
+                        <h5 f="p">根据消息的属性值或序列对消息进行路由。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="8_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/switch.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="8_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)名称：节点的名称。</h5>
+						<h5 f="p" class="mgb-big">(2)属性：对消息属性的选择。</h5>
+						<img src="../../pub-pic/switch-shuxing.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">(3)操作域：可以对传入的值做判断，条件符合的参数输出到相应的节点，如下图所示，左侧红色区域可以对值进行逻辑判断，右侧的红色区域表示值的去向。。</h5>
+						<img src="../../pub-pic/switch-caozuo.jpg" alt="" f="img">
+					</li>
+					<li>
+                        <h3 f="h" class="fz-16 mgb-big" id="8_4">节点测试</h3>
+                        <h5 f="p" class="mgb-big">(1)流程分析：在function标签中设置msg.payload=2。在switch标签中设置如果msg.payload=1，走向第一个dubug。如果msg.payload=2，走向第二个debug。</h5>
+						<h5 f="p" class="mgb-big">(2)流程图</h5>
+						<img src="../../pub-pic/switch-liucheng.jpg" alt="" f="img">
+						<img src="../../pub-pic/switch-neirong.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">(3)测试结果</h5>
+						<img src="../../pub-pic/switch-jieguo.jpg" alt="" f="img">
+					</li>
+                </ol>
+            </li>
+			
+			<li>
+                <h2 f="h" class="fz-20 pdt-big">九. 功能-change</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="9_1">含义</h3>
+                        <h5 f="p">设定，修改，转移，删除消息，流上下文，或者全局上下文的属性。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="9_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/switch.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="9_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)名称：节点的名称。</h5>
+						<h5 f="p" class="mgb-big">①设定：将2的信息设置的1的信息里面，将设置到msg.payload里面。</h5>
+						<img src="../../pub-pic/change-sheding.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">②修改：将节点中的信息查找到并进行修改。在msg.payload中查找为2的字符串并替换为3。</h5>
+						<img src="../../pub-pic/change-xiugai.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">删除：将上下文的信息进行删除，例如可以将msg.payload中的信息进行删除。</h5>
+						<img src="../../pub-pic/change-shanchu.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">④转移：将节点中的信息转移到另一个节点中，并删除上一节点的信息。例如，将msg.payload中的信息转移到msg.id中。</h5>
+						<img src="../../pub-pic/change-zhuanyi.jpg" alt="" f="img">
+					</li>
+                </ol>
+            </li>
+			
+			<li>
+                <h2 f="h" class="fz-20 pdt-big">十. 功能-split</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="10_1">含义</h3>
+                        <h5 f="p">将消息拆分为一系列的消息。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="10_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/split.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="10_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)字符串/Buffer：拆分字符串，在msg.payload中设置了字符串“2&&3”,使用split标签进行拆分后，会出现两个payload的信息，分别存储。</h5>
+						<img src="../../pub-pic/split-string.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">(2)数组：对数组进行拆分。</h5>
+						<img src="../../pub-pic/split-arr.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">对象：对对象进行拆分。其中可以将对象的key复制到msg.topic中。</h5>
+						<img src="../../pub-pic/split-obj.jpg" alt="" f="img">
+					</li>
+                </ol>
+            </li>
+          
+		  <li>
+                <h2 f="h" class="fz-20 pdt-big">十一. 功能-join</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="11_1">含义</h3>
+                        <h5 f="p">将消息序列连接到单个消息里面。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="11_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/join.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="11_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)模式</h5>
+						<h5 f="p" class="mgb-big">①自动：与拆分节点配对使用时，它将自动加入消息以反转已执行的拆分。</h5>
+						<h5 f="p" class="mgb-big">②手动：手动配置合并合并的方式加入消息序列，可以设置合并的的节点，输出方式以及合并的符号。</h5>
+						<h5 f="p" class="mgb-big">③缩减序列：对序列中的所有消息应用表达式以将其减少为单个消息。</h5>
+						<h5 f="p" class="mgb-big">(2)名称：该节点的名称。</h5>
+					</li>
+                </ol>
+            </li>
+			
+			<li>
+                <h2 f="h" class="fz-20 pdt-big">十二. 功能-json</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="12_1">含义</h3>
+                        <h5 f="p">将参数在json字符串及其JavaScript对象之间进行转换。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="12_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/json.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="12_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)操作：可以设定对参数的操作。</h5>
+						<img src="../../pub-pic/jsonuse.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">①JSON字符串和对象互转：将json字符串转换成js对象。</h5>
+						<h5 f="p" class="mgb-big">②总是转为json字符串：将参数转换为json字符串。</h5>
+						<h5 f="p" class="mgb-big">③总是转为js对象：将参数转换为js对象。</h5>
+						<h5 f="p" class="mgb-big">(2)属性：装换值的位置，默认为msg.payload中的参数信息。</h5>
+						<h5 f="p" class="mgb-big">(3)名称：该节点的名称。</h5>
+					</li>
+                </ol>
+            </li>
+            <li>
+                <h2 f="h" class="fz-20 pdt-big">十三. 功能-xml</h2>
+                <ol f="ol" class="fz-16">
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="13_1">含义</h3>
+                        <h5 f="p">在xml字符串及其JavaScript对象之间进行转换。</h5>
+                    </li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="13_2">标签图标以及功能图</h3>
+						<img src="../../pub-pic/xml.jpg" alt="" f="img">
+					</li>
+                    <li>
+                        <h3 f="h" class="fz-16 mgb-big" id="13_3">节点属性</h3>
+                        <h5 f="p" class="mgb-big">(1)属性：设置xml标签进行转换的域，默认是msg.payload。</h5>
+						<h5 f="p" class="mgb-big">(2)名称：该节点的名称。</h5>
+						<h5 f="p" class="mgb-big">(3)忽略属性名称：勾选后在报文中不显示报文中各个节点中值的属性，不勾选会显示属性名称。如下图所示：</h5>
+						<h5 f="p" class="mgb-big">不勾选</h5>
+						<img src="../../pub-pic/xml-noselect.jpg" alt="" f="img">
+						<h5 f="p" class="mgb-big">勾选</h5>
+						<img src="../../pub-pic/xml-select.jpg" alt="" f="img">
+					</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../../pub-ui/js/jquery-1.11.3.min.js"></script>
+<script src="../../pub-ui/js/interface.min.js"></script>
+<script src="../../pub-script/common.js"></script>
+<script src="../../pub-script/index.js"></script>
+</html>

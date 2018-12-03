@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sitech.paas.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.sitech.paas.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="enable" jdbcType="INTEGER" property="enable" />
+  </resultMap>
+  
+  <!--修改用户启用状态  -->
+  <update id="changeByUser" parameterType="com.sitech.paas.entity.User">
+  	 UPDATE `userInfo` SET `is_valid` = 0 WHERE user_id =#{id}
+  </update>
+  <!--修改用户启用状态  -->
+  <update id="changeByUser1" parameterType="com.sitech.paas.entity.User">
+  	 UPDATE `userInfo` SET `is_valid` = 1 WHERE user_id =#{id}
+  </update>
+  
+  <!--修改用户信息  -->
+  <update id="updateUserByName" parameterType="com.sitech.paas.entity.User">
+  	 UPDATE `user` SET username = #{username}, `password` = #{password}, `enable` = #{enable} where id = #{id}
+  </update>
+  <!--查看用户是否重复  -->
+  <select id="findDontHaveMy" parameterType="com.sitech.paas.entity.User" resultType="com.sitech.paas.entity.User">
+  	 SELECT * FROM `user` where id != #{id};
+  </select>
+</mapper>

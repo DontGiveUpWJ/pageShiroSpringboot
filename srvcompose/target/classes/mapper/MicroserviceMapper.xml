@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sitech.paas.mapper.MicroserviceMapper">
+	<resultMap id="BaseResultMap" type="com.sitech.paas.entity.Microservice">
+		<id column="srv_id" property="serverId" jdbcType="INTEGER" />
+		<result column="srv_name" property="serverName" jdbcType="VARCHAR" />
+		<result column="atom_srv_sign" property="serverUniqueid"
+			jdbcType="VARCHAR" />
+		<result column="srv_ch_name" property="serverChName"
+			jdbcType="VARCHAR" />
+		<result column="srv_app_name" property="serverApp" jdbcType="VARCHAR" />
+		<result column="srv_src_name" property="serverOrginName"
+			jdbcType="VARCHAR" />
+		<result column="srv_url" property="serverUrl" jdbcType="VARCHAR" />
+		<result column="srv_register" property="serverRegister"
+			jdbcType="VARCHAR" />
+		<result column="srv_loadbalance_list" property="serverBalanceloadUrl"
+			jdbcType="VARCHAR" />
+		<result column="srv_type" property="serverType" jdbcType="INTEGER" />
+		<result column="srv_version" property="serverVersion"
+			jdbcType="VARCHAR" />
+		<result column="srv_group" property="serverGroup" jdbcType="VARCHAR" />
+		<result column="srv_timeout" property="serverTimeout"
+			jdbcType="INTEGER" />
+		<result column="srv_loadbalance" property="serverBalanceload"
+			jdbcType="VARCHAR" />
+		<result column="srv_failover" property="serverFailover"
+			jdbcType="INTEGER" />
+		<result column="srv_input" property="serverParamsIn"
+			jdbcType="VARCHAR" />
+		<result column="srv_output" property="serverParamsOut"
+			jdbcType="VARCHAR" />
+		<result column="srv_success_desc" property="serverStatusNormal"
+			jdbcType="VARCHAR" />
+		<result column="srv_error_desc" property="serverStatusError"
+			jdbcType="VARCHAR" />
+		<result column="srv_source_info" property="serverFrom" jdbcType="VARCHAR" />
+		<result column="srv_system" property="serverSystem"
+			jdbcType="VARCHAR" />
+		<result column="srv_bus_center" property="serverBusiness"
+			jdbcType="VARCHAR" />
+		<result column="srv_create" property="serverAuthor"
+			jdbcType="VARCHAR" />
+		<result column="srv_update" property="serverUpdateAuthor"
+			jdbcType="VARCHAR" />
+		<result column="create_time" property="serverCtime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="serverUpdatetime"
+			jdbcType="TIMESTAMP" />
+		<result column="srv_init_type" property="serverDatainitMode"
+			jdbcType="BIT" />
+		<result column="srv_update_type" property="serverDatamodMode"
+			jdbcType="BIT" />
+		<result column="srv_method" property="serverMethod"
+			jdbcType="VARCHAR" />
+		<result column="srv_desc" property="serverDesc"
+				jdbcType="VARCHAR" />
+		<result column="is_valid" property="isValid"
+				jdbcType="BIT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		srv_id, srv_name, atom_srv_sign, srv_ch_name, srv_app_name,
+		srv_src_name,
+		srv_url, srv_register, srv_loadbalance_list, srv_type, srv_version,
+		srv_group, srv_timeout, srv_loadbalance, srv_failover,
+		srv_input,
+		srv_output, srv_success_desc, srv_error_desc, srv_system,
+		srv_source_info,
+		srv_bus_center, srv_create, srv_update, create_time, update_time,
+		srv_init_type, srv_update_type, srv_method,is_valid,srv_desc
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from atom_serviceInfo
+		where srv_id = #{serverId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from atom_serviceInfo
+		where srv_id = #{serverId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.sitech.paas.entity.Microservice">
+		insert into atom_serviceInfo (srv_id, srv_name, atom_srv_sign,
+		srv_ch_name, srv_app_name, srv_src_name,
+		srv_url, srv_register, srv_loadbalance_list,
+		srv_type, srv_version, srv_group,
+		srv_timeout, srv_loadbalance, srv_failover,
+		srv_input, srv_output, srv_success_desc,
+		srv_error_desc, srv_system, srv_source_info,
+		srv_bus_center, srv_create, srv_update,
+		create_time, update_time, srv_init_type,
+		srv_update_type, srv_method,is_valid,srv_desc
+		)
+		values (#{serverId,jdbcType=INTEGER}, #{serverName,jdbcType=VARCHAR},
+		#{serverUniqueid,jdbcType=VARCHAR},
+		#{serverChName,jdbcType=VARCHAR}, #{serverApp,jdbcType=VARCHAR}, #{serverOrginName,jdbcType=VARCHAR},
+		#{serverUrl,jdbcType=VARCHAR}, #{serverRegister,jdbcType=VARCHAR},
+		#{serverBalanceloadUrl,jdbcType=VARCHAR},
+		#{serverType,jdbcType=INTEGER}, #{serverVersion,jdbcType=VARCHAR},
+		#{serverGroup,jdbcType=VARCHAR},
+		#{serverTimeout,jdbcType=INTEGER}, #{serverBalanceload,jdbcType=VARCHAR},
+		#{serverFailover,jdbcType=INTEGER},
+		#{serverParamsIn,jdbcType=VARCHAR},
+		#{serverParamsOut,jdbcType=VARCHAR},
+		#{serverStatusNormal,jdbcType=VARCHAR},
+		#{serverStatusError,jdbcType=VARCHAR}, #{serverFrom,jdbcType=VARCHAR},
+		#{serverSystem,jdbcType=VARCHAR},
+		#{serverBusiness,jdbcType=VARCHAR}, #{serverAuthor,jdbcType=VARCHAR},
+		#{serverUpdateAuthor,jdbcType=VARCHAR},
+		#{serverCtime,jdbcType=TIMESTAMP},
+		#{serverUpdatetime,jdbcType=TIMESTAMP},
+		#{serverDatainitMode,jdbcType=BIT},
+		#{serverDatamodMode,jdbcType=BIT}, #{serverMethod,jdbcType=VARCHAR},
+		#{isValid,jdbcType=BIT},#{serverDesc,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.sitech.paas.entity.Microservice">
+		insert into atom_serviceInfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="serverId != null">
+				srv_id,
+			</if>
+			<if test="serverName != null">
+				srv_name,
+			</if>
+			<if test="serverUniqueid != null">
+				atom_srv_sign,
+			</if>
+			<if test="serverChName != null">
+				srv_ch_name,
+			</if>
+			<if test="serverApp != null">
+				srv_app_name,
+			</if>
+			<if test="serverOrginName != null">
+				srv_src_name,
+			</if>
+			<if test="serverUrl != null">
+				srv_url,
+			</if>
+			<if test="serverRegister != null">
+				srv_register,
+			</if>
+			<if test="serverBalanceloadUrl != null">
+				srv_loadbalance_list,
+			</if>
+			<if test="serverType != null">
+				srv_type,
+			</if>
+			<if test="serverVersion != null">
+				srv_version,
+			</if>
+			<if test="serverGroup != null">
+				srv_group,
+			</if>
+			<if test="serverTimeout != null">
+				srv_timeout,
+			</if>
+			<if test="serverBalanceload != null">
+				srv_loadbalance,
+			</if>
+			<if test="serverFailover != null">
+				srv_failover,
+			</if>
+			<if test="serverParamsIn != null">
+				srv_input,
+			</if>
+			<if test="serverParamsOut != null">
+				srv_output,
+			</if>
+			<if test="serverStatusNormal != null">
+				srv_success_desc,
+			</if>
+			<if test="serverStatusError != null">
+				srv_error_desc,
+			</if>
+			<if test="serverFrom != null">
+				srv_system,
+			</if>
+			<if test="serverSystem != null">
+				srv_source_info,
+			</if>
+			<if test="serverBusiness != null">
+				srv_bus_center,
+			</if>
+			<if test="serverAuthor != null">
+				srv_create,
+			</if>
+			<if test="serverUpdateAuthor != null">
+				srv_update,
+			</if>
+			<if test="serverCtime != null">
+				create_time,
+			</if>
+			<if test="serverUpdatetime != null">
+				update_time,
+			</if>
+			<if test="serverDatainitMode != null">
+				srv_init_type,
+			</if>
+			<if test="serverDatamodMode != null">
+				srv_update_type,
+			</if>
+			<if test="serverMethod != null">
+				srv_method,
+			</if>
+			<if test="isValid != null">
+				is_valid,
+			</if>
+			<if test="serverDesc != null">
+				srv_desc,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="serverId != null">
+				#{serverId,jdbcType=INTEGER},
+			</if>
+			<if test="serverName != null">
+				#{serverName,jdbcType=VARCHAR},
+			</if>
+			<if test="serverUniqueid != null">
+				#{serverUniqueid,jdbcType=VARCHAR},
+			</if>
+			<if test="serverChName != null">
+				#{serverChName,jdbcType=VARCHAR},
+			</if>
+			<if test="serverApp != null">
+				#{serverApp,jdbcType=VARCHAR},
+			</if>
+			<if test="serverOrginName != null">
+				#{serverOrginName,jdbcType=VARCHAR},
+			</if>
+			<if test="serverUrl != null">
+				#{serverUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="serverRegister != null">
+				#{serverRegister,jdbcType=VARCHAR},
+			</if>
+			<if test="serverBalanceloadUrl != null">
+				#{serverBalanceloadUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="serverType != null">
+				#{serverType,jdbcType=INTEGER},
+			</if>
+			<if test="serverVersion != null">
+				#{serverVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="serverGroup != null">
+				#{serverGroup,jdbcType=VARCHAR},
+			</if>
+			<if test="serverTimeout != null">
+				#{serverTimeout,jdbcType=INTEGER},
+			</if>
+			<if test="serverBalanceload != null">
+				#{serverBalanceload,jdbcType=VARCHAR},
+			</if>
+			<if test="serverFailover != null">
+				#{serverFailover,jdbcType=INTEGER},
+			</if>
+			<if test="serverParamsIn != null">
+				#{serverParamsIn,jdbcType=VARCHAR},
+			</if>
+			<if test="serverParamsOut != null">
+				#{serverParamsOut,jdbcType=VARCHAR},
+			</if>
+			<if test="serverStatusNormal != null">
+				#{serverStatusNormal,jdbcType=VARCHAR},
+			</if>
+			<if test="serverStatusError != null">
+				#{serverStatusError,jdbcType=VARCHAR},
+			</if>
+			<if test="serverFrom != null">
+				#{serverFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="serverSystem != null">
+				#{serverSystem,jdbcType=VARCHAR},
+			</if>
+			<if test="serverBusiness != null">
+				#{serverBusiness,jdbcType=VARCHAR},
+			</if>
+			<if test="serverAuthor != null">
+				#{serverAuthor,jdbcType=VARCHAR},
+			</if>
+			<if test="serverUpdateAuthor != null">
+				#{serverUpdateAuthor,jdbcType=VARCHAR},
+			</if>
+			<if test="serverCtime != null">
+				#{serverCtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="serverUpdatetime != null">
+				#{serverUpdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="serverDatainitMode != null">
+				#{serverDatainitMode,jdbcType=BIT},
+			</if>
+			<if test="serverDatamodMode != null">
+				#{serverDatamodMode,jdbcType=BIT},
+			</if>
+			<if test="serverMethod != null">
+				#{serverMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="isValid != null">
+				#{isValid,jdbcType=BIT},
+			</if>
+			<if test="serverDesc != null">
+				#{serverDesc,jdbcType=BIT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.sitech.paas.entity.Microservice">
+		update atom_serviceInfo
+		<set>
+			<if test="serverName != null">
+				srv_name = #{serverName,jdbcType=VARCHAR},
+			</if>
+			<if test="serverUniqueid != null">
+				atom_srv_sign = #{serverUniqueid,jdbcType=VARCHAR},
+			</if>
+			<if test="serverChName != null">
+				srv_ch_name = #{serverChName,jdbcType=VARCHAR},
+			</if>
+			<if test="serverApp != null">
+				srv_app_name = #{serverApp,jdbcType=VARCHAR},
+			</if>
+			<if test="serverOrginName != null">
+				srv_src_name = #{serverOrginName,jdbcType=VARCHAR},
+			</if>
+			<if test="serverUrl != null">
+				srv_url = #{serverUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="serverRegister != null">
+				srv_register = #{serverRegister,jdbcType=VARCHAR},
+			</if>
+			<if test="serverBalanceloadUrl != null">
+				srv_loadbalance_list = #{serverBalanceloadUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="serverType != null">
+				srv_type = #{serverType,jdbcType=INTEGER},
+			</if>
+			<if test="serverVersion != null">
+				srv_version = #{serverVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="serverGroup != null">
+				srv_group = #{serverGroup,jdbcType=VARCHAR},
+			</if>
+			<if test="serverTimeout != null">
+				srv_timeout = #{serverTimeout,jdbcType=INTEGER},
+			</if>
+			<if test="serverBalanceload != null">
+				srv_loadbalance = #{serverBalanceload,jdbcType=VARCHAR},
+			</if>
+			<if test="serverFailover != null">
+				srv_failover = #{serverFailover,jdbcType=INTEGER},
+			</if>
+			<if test="serverParamsIn != null">
+				srv_input = #{serverParamsIn,jdbcType=VARCHAR},
+			</if>
+			<if test="serverParamsOut != null">
+				srv_output = #{serverParamsOut,jdbcType=VARCHAR},
+			</if>
+			<if test="serverStatusNormal != null">
+				srv_success_desc = #{serverStatusNormal,jdbcType=VARCHAR},
+			</if>
+			<if test="serverStatusError != null">
+				srv_error_desc = #{serverStatusError,jdbcType=VARCHAR},
+			</if>
+			<if test="serverFrom != null">
+				srv_system = #{serverFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="serverSystem != null">
+				srv_source_info = #{serverSystem,jdbcType=VARCHAR},
+			</if>
+			<if test="serverBusiness != null">
+				srv_bus_center = #{serverBusiness,jdbcType=VARCHAR},
+			</if>
+			<if test="serverAuthor != null">
+				srv_create = #{serverAuthor,jdbcType=VARCHAR},
+			</if>
+			<if test="serverUpdateAuthor != null">
+				srv_update = #{serverUpdateAuthor,jdbcType=VARCHAR},
+			</if>
+			<if test="serverCtime != null">
+				create_time = #{serverCtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="serverUpdatetime != null">
+				update_time = #{serverUpdatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="serverDatainitMode != null">
+				srv_init_type = #{serverDatainitMode,jdbcType=BIT},
+			</if>
+			<if test="serverDatamodMode != null">
+				srv_update_type = #{serverDatamodMode,jdbcType=BIT},
+			</if>
+			<if test="serverMethod != null">
+				srv_method = #{serverMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="isValid != null">
+				is_valid = #{isValid,jdbcType=BIT},
+			</if>
+			<if test="serverDesc != null">
+				srv_desc = #{serverDesc,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where srv_id = #{serverId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.sitech.paas.entity.Microservice">
+		update atom_serviceInfo
+		set srv_name = #{serverName,jdbcType=VARCHAR},
+		atom_srv_sign = #{serverUniqueid,jdbcType=VARCHAR},
+		srv_ch_name = #{serverChName,jdbcType=VARCHAR},
+		srv_app_name = #{serverApp,jdbcType=VARCHAR},
+		srv_src_name = #{serverOrginName,jdbcType=VARCHAR},
+		srv_url = #{serverUrl,jdbcType=VARCHAR},
+		srv_register = #{serverRegister,jdbcType=VARCHAR},
+		srv_loadbalance_list = #{serverBalanceloadUrl,jdbcType=VARCHAR},
+		srv_type = #{serverType,jdbcType=INTEGER},
+		srv_version = #{serverVersion,jdbcType=VARCHAR},
+		srv_group = #{serverGroup,jdbcType=VARCHAR},
+		srv_timeout = #{serverTimeout,jdbcType=INTEGER},
+		srv_loadbalance = #{serverBalanceload,jdbcType=INTEGER},
+		srv_failover = #{serverFailover,jdbcType=INTEGER},
+		srv_input = #{serverParamsIn,jdbcType=VARCHAR},
+		srv_output = #{serverParamsOut,jdbcType=VARCHAR},
+		srv_success_desc = #{serverStatusNormal,jdbcType=VARCHAR},
+		srv_error_desc = #{serverStatusError,jdbcType=VARCHAR},
+		srv_system = #{serverFrom,jdbcType=VARCHAR},
+		srv_source_info = #{serverSystem,jdbcType=VARCHAR},
+		srv_bus_center = #{serverBusiness,jdbcType=VARCHAR},
+		srv_create = #{serverAuthor,jdbcType=VARCHAR},
+		srv_update = #{serverUpdateAuthor,jdbcType=VARCHAR},
+		create_time = #{serverCtime,jdbcType=TIMESTAMP},
+		update_time = #{serverUpdatetime,jdbcType=TIMESTAMP},
+		srv_init_type = #{serverDatainitMode,jdbcType=BIT},
+		srv_update_type = #{serverDatamodMode,jdbcType=BIT},
+		srv_method = #{serverMethod,jdbcType=VARCHAR},
+		is_valid = #{isValid,jdbcType=BIT},
+		srv_desc = #{serverDesc,jdbcType=VARCHAR},
+		where srv_id = #{serverId,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByUniqueId" parameterType="com.sitech.paas.entity.Microservice">
+		update atom_serviceInfo
+		set srv_name = #{serverName,jdbcType=VARCHAR},
+		atom_srv_sign = #{serverUniqueid,jdbcType=VARCHAR},
+		srv_ch_name = #{serverChName,jdbcType=VARCHAR},
+		srv_app_name = #{serverApp,jdbcType=VARCHAR},
+		srv_src_name = #{serverOrginName,jdbcType=VARCHAR},
+		srv_url = #{serverUrl,jdbcType=VARCHAR},
+		srv_register = #{serverRegister,jdbcType=VARCHAR},
+		srv_loadbalance_list = #{serverBalanceloadUrl,jdbcType=VARCHAR},
+		srv_type = #{serverType,jdbcType=INTEGER},
+		srv_version = #{serverVersion,jdbcType=VARCHAR},
+		srv_group = #{serverGroup,jdbcType=VARCHAR},
+		srv_timeout = #{serverTimeout,jdbcType=INTEGER},
+		srv_loadbalance = #{serverBalanceload,jdbcType=VARCHAR},
+		srv_failover = #{serverFailover,jdbcType=INTEGER},
+		srv_input = #{serverParamsIn,jdbcType=VARCHAR},
+		srv_output = #{serverParamsOut,jdbcType=VARCHAR},
+		srv_success_desc = #{serverStatusNormal,jdbcType=VARCHAR},
+		srv_error_desc = #{serverStatusError,jdbcType=VARCHAR},
+		srv_system = #{serverFrom,jdbcType=VARCHAR},
+		srv_source_info = #{serverSystem,jdbcType=VARCHAR},
+		srv_bus_center = #{serverBusiness,jdbcType=VARCHAR},
+		srv_create = #{serverAuthor,jdbcType=VARCHAR},
+		srv_update = #{serverUpdateAuthor,jdbcType=VARCHAR},
+		create_time = #{serverCtime,jdbcType=TIMESTAMP},
+		update_time = #{serverUpdatetime,jdbcType=TIMESTAMP},
+		srv_init_type = #{serverDatainitMode,jdbcType=BIT},
+		srv_update_type = #{serverDatamodMode,jdbcType=BIT},
+		srv_method = #{serverMethod,jdbcType=VARCHAR},
+		is_valid = #{isValid,jdbcType=BIT},
+		srv_desc = #{serverDesc,jdbcType=VARCHAR}
+		where atom_srv_sign = #{serverUniqueid,jdbcType=VARCHAR}
+	</update>
+
+	<select id="searchMicrs" resultMap="BaseResultMap" parameterType="com.sitech.paas.entity.RequestParam">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM atom_serviceInfo d
+		<where>
+			<if test="name!=null and name!=''">
+				d.srv_name LIKE "%"#{name}"%"
+			</if>
+			<if test="uniqueId!=null and uniqueId!=''">
+				and d.atom_srv_sign LIKE "%"#{uniqueId}"%"
+			</if>
+			<if test="type!=null and type!=''">
+				and d.srv_type = #{type}
+			</if>
+		</where>
+	</select>
+
+	<select id="getCountByUniqueId" resultType="java.lang.Integer">
+		SELECT
+		COUNT(1)
+		FROM
+		atom_serviceInfo
+		WHERE
+		atom_srv_sign = #{uniqueId}
+	</select>
+
+	<select id="getMicroserviceByUniqueId" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		atom_serviceInfo
+		WHERE
+		atom_srv_sign = #{uniqueId}
+	</select>
+
+	<select id="getMicroserviceAll" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		atom_serviceInfo
+	</select>
+
+
+	<delete id="deleteBatch" >
+		DELETE FROM atom_serviceInfo
+		<foreach collection="list" item="uniqueid" separator=","
+				 open="where atom_srv_sign in(" close=")">
+			#{uniqueid}
+		</foreach>
+	</delete>
+
+	<insert id="insertBatch" parameterType="list">
+		insert into atom_serviceInfo (srv_id, srv_name, atom_srv_sign,
+		srv_ch_name, srv_app_name, srv_src_name,
+		srv_url, srv_register, srv_loadbalance_list,
+		srv_type, srv_version, srv_group,
+		srv_timeout, srv_loadbalance, srv_failover,
+		srv_input, srv_output, srv_success_desc,
+		srv_error_desc, srv_system, srv_source_info,
+		srv_bus_center, srv_create, srv_update,
+		create_time, update_time, srv_init_type,
+		srv_update_type, srv_method,is_valid,srv_desc
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{serverId,jdbcType=INTEGER}, #{serverName,jdbcType=VARCHAR},
+			#{serverUniqueid,jdbcType=VARCHAR},
+			#{serverChName,jdbcType=VARCHAR}, #{serverApp,jdbcType=VARCHAR}, #{serverOrginName,jdbcType=VARCHAR},
+			#{serverUrl,jdbcType=VARCHAR}, #{serverRegister,jdbcType=VARCHAR},
+			#{serverBalanceloadUrl,jdbcType=VARCHAR},
+			#{serverType,jdbcType=INTEGER}, #{serverVersion,jdbcType=VARCHAR},
+			#{serverGroup,jdbcType=VARCHAR},
+			#{serverTimeout,jdbcType=INTEGER}, #{serverBalanceload,jdbcType=VARCHAR},
+			#{serverFailover,jdbcType=INTEGER},
+			#{serverParamsIn,jdbcType=VARCHAR},
+			#{serverParamsOut,jdbcType=VARCHAR},
+			#{serverStatusNormal,jdbcType=VARCHAR},
+			#{serverStatusError,jdbcType=VARCHAR}, #{serverFrom,jdbcType=VARCHAR},
+			#{serverSystem,jdbcType=VARCHAR},
+			#{serverBusiness,jdbcType=VARCHAR}, #{serverAuthor,jdbcType=VARCHAR},
+			#{serverUpdateAuthor,jdbcType=VARCHAR},
+			#{serverCtime,jdbcType=TIMESTAMP},
+			#{serverUpdatetime,jdbcType=TIMESTAMP},
+			#{serverDatainitMode,jdbcType=BIT},
+			#{serverDatamodMode,jdbcType=BIT}, #{serverMethod,jdbcType=VARCHAR},
+			#{isValid,jdbcType=BIT},#{serverDesc,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+	
+	<select id="queryServerFormEsbHsf" resultMap="BaseResultMap">
+		SELECT
+			s.SRV_NAME AS serverName,
+			s.SRV_CH_NAME AS serverChName,
+			h.ZOOKEEPERAPPNAME AS serverApp,
+			h.HSF_VERSION AS serverVersion,
+			h.LOADBALANCE AS serverBalanceload,
+			h.GROUPNAME AS serverGroup,
+			h.REQ_TIMEOUT AS serverTimeout,
+			so.SYSTEM_NAME AS serverSystem,
+			so.EPR1 AS serverRegister
+		FROM
+			hsf_srvinfo h
+		LEFT JOIN
+			srvinfo s
+		ON
+			h.srv_id = s.srv_id
+		LEFT JOIN
+			soaphttp_system so
+		ON
+			so.SOAPHTTP_SYSTEMID = h.SOAPHTTP_SYSTEMID
+		WHERE
+			s.SRV_NAME = #{name}
+	</select>
+
+	<select id="queryServerFormEsbHttp" resultMap="BaseResultMap">
+		SELECT
+			s.SRV_NAME AS serverName,
+			s.SRV_CH_NAME AS serverChName,
+			s.SRV_VER AS serverVersion,
+			h.REQ_TIMEOUT AS serverTimeout,
+			h.SADDRESS AS serverOrginName,
+			so.SYSTEM_NAME AS serverSystem,
+			so.EPR1 AS serverUrl
+		FROM
+			http_srvinfo h
+		LEFT JOIN
+			srvinfo s
+		ON
+			h.srv_id = s.srv_id
+		LEFT JOIN
+			soaphttp_system so
+		ON
+			so.SOAPHTTP_SYSTEMID = h.SOAPHTTP_SYSTEMID
+		WHERE
+			s.SRV_NAME = #{name}
+	</select>
+	
+	<select id="queryServerFormEsbList" resultMap="BaseResultMap" parameterType="com.sitech.paas.entity.RequestParam">
+		SELECT
+			s.SRV_TYPE AS serverType,
+			s.SRV_NAME AS serverName,
+			s.SRV_CH_NAME AS serverChName,
+			s.SRV_MODIFY_TIME AS serverUpdatetime
+		FROM
+			srvinfo s
+		WHERE SRV_TYPE IN (5,16)
+		<if test="name != null">
+			and s.SRV_NAME LIKE "%"#{name}"%"
+		</if>
+	</select>
+
+</mapper>

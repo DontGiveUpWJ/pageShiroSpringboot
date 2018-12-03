@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sitech.paas.mapper.Http2inMapper" >
+  <resultMap id="BaseResultMap" type="com.sitech.paas.entity.Http2in" >
+    <id column="com_info_id" property="id" jdbcType="INTEGER" />
+    <result column="com_srv_id" property="httpId" jdbcType="VARCHAR" />
+    <result column="com_srv_name" property="name" jdbcType="VARCHAR" />
+    <result column="com_srv_url" property="url" jdbcType="VARCHAR" />
+    <result column="com_srv_method" property="method" jdbcType="VARCHAR" />
+    <result column="com_tab_id" property="z" jdbcType="VARCHAR" />
+    <result column="com_tab_name" property="tabname" jdbcType="VARCHAR" />
+    <result column="com_wires" property="wires" jdbcType="VARCHAR" />
+    <result column="is_valid" property="isValid" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.sitech.paas.entity.Http2in" extends="BaseResultMap" >
+    <result column="com_childs_info" property="childs" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    com_info_id,com_srv_id, com_srv_name, com_srv_url, com_srv_method, com_tab_id, com_tab_name, com_wires,is_valid
+  </sql>
+  <sql id="Blob_Column_List" >
+    com_childs_info
+  </sql>
+
+  <select id="findHttp2inByRequestParam" resultMap="BaseResultMap" parameterType="com.sitech.paas.entity.RequestParam">
+    SELECT
+    <include refid="Base_Column_List"/>,
+    <include refid="Blob_Column_List"/>
+    FROM composite_serviceInfo d
+    <where>
+      <if test="tabName!=null and tabName!=''">
+        d.com_tab_name LIKE "%"#{tabName}"%"
+      </if>
+      <if test="name!=null and name!=''">
+        and d.com_srv_name LIKE "%"#{name}"%"
+      </if>
+    </where>
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List"/>
+    ,
+    <include refid="Blob_Column_List"/>
+    FROM composite_serviceInfo
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from composite_serviceInfo
+    where com_srv_id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from composite_serviceInfo
+    where com_srv_id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.sitech.paas.entity.Http2in">
+    insert into composite_serviceInfo (com_srv_id, com_srv_name, com_srv_url,
+      com_srv_method, com_tab_id, com_tab_name,
+      com_wires, is_valid,com_childs_info)
+    values (#{httpId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR},
+      #{method,jdbcType=VARCHAR}, #{z,jdbcType=VARCHAR}, #{tabname,jdbcType=VARCHAR},
+      #{wires,jdbcType=VARCHAR}, #{isValid,jdbcType=BIT},#{childs,jdbcType=LONGVARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.sitech.paas.entity.Http2in" >
+    update composite_serviceInfo
+    <set >
+      <if test="name != null" >
+        com_srv_name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        com_srv_url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        com_srv_method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="z != null" >
+        com_tab_id = #{z,jdbcType=VARCHAR},
+      </if>
+      <if test="tabname != null" >
+        com_tab_name = #{tabname,jdbcType=VARCHAR},
+      </if>
+      <if test="wires != null" >
+        com_wires = #{wires,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=BIT},
+      </if>
+      <if test="childs != null" >
+        com_childs_info = #{childs,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where com_info_id = #{httpId,jdbcType=VARCHAR}
+  </update>
+</mapper>

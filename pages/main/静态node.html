@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>node管理</title>
+    <link href="../../pub-ui/css/interface.min.css" rel="stylesheet">
+    <link href="../../pub-ui/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../pub-ui/plugins/artDialog/ui-dialog.css" rel="stylesheet">
+    <link href="../../pub-ui/css/app.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="../../pub-ui/js/ieonly/html5shiv.js"></script>
+        <script src="../../pub-ui/js/ieonly/respond.js"></script>
+        <script src="../../pub-ui/js/ieonly/excanvas.js"></script>
+    <![endif]-->
+</head>
+<body class="bg-graywhite font-sm">
+    <div f="div" class="pdl-big pdr-big pdb-md pdt-md border-bottom"><label f="" class="mgb-0 mgr-huge"><span f="span">流程编号：</span><input type="text" id = "nId" name = "nId" class="form-control inline-block" f="input"></label><label f="label-input" class="mgb-0 mgl-big"><span f="span">流程名称：</span><input type="text" id = "nName" name = "nName" class="form-control inline-block" f="input"></label>
+        <label f="label-input" class="mgb-0 mgl-big"><span f="span">流程描述：</span><input type="text" id = "nDesc" name = "nDesc" class="form-control inline-block" f="input"></label>
+		<div f="div" class="pull-right"><button class="btn btn-primary" type="button" f="btn-icon" name="subName" id="subIdNode">
+    <i class="font-icon font-icon-search" f="font-icon"></i>&nbsp;查询</button>
+            <button id="node-add" class="btn mgl-lg text-primary" type="button" f="btn-icon">
+    <i class="font-icon font-icon-plus" f="font-icon"></i>&nbsp;新增</button>
+            <button id="node-del" class="btn mgl-lg text-primary" type="button" f="btn-icon">
+   <i class="font-icon font-icon-trash-o" f="font-icon"></i>&nbsp;删除</button>
+          
+        </div>
+    </div>
+    <p f="p" class="mgr-big mgl-big text-muted mgt-big mgb-big" id = "show_count">共搜索到 922 条数据</p>
+    <div f="div" class="mgl-big mgr-big mgb-big pdb-lg bg-white pdl-lg pdr-lg with-headbg clearfix">
+        <div class="table-wrap">
+            <table class="table table-hover border-bottom mgb-0" style="border:none;" f="table" name="table" id="table">
+                <thead>
+                    <tr f="tr">
+                        <th f="th" class="text-center"><input class="js_select" type="checkbox" f="checkbox"></th>
+                        <th f="th">流程ID</th>
+                        <th f="th">流程</th>
+                        <th f="th">流程描述</th>
+                    </tr>
+                </thead>
+                <tbody id="sList">                  
+                </tbody>
+            </table>
+        </div>
+		
+		<!--<ul id = "pageId" class="ui-page pull-right mgt-big " f="page">
+            
+        </ul>-->
+		
+		
+	 <ul class="ui-page pull-right mgt-big" id = "pageList">
+     
+    </ul>
+
+    </div>
+    
+     
+</body>
+<script type="text/html" id="tpl-node-add">
+    <div f="div" id = "dId">
+        <p f="p" class="text-muted">
+            流程名</p>
+        <input type="text"  id = "noId" name = "noId" class="form-control mgb-lg" f="input">
+        <p f="p" class="text-muted">
+            流程描述
+        </p><input type="text" id = "noDesc" name = "noDesc" class="form-control" f="input">
+        
+    </div>
+</script>
+<script type="text/html" id="tpl-look">
+    <div f="div">
+        <form id="edit-form">
+            <p f="p" class="text-muted">
+                用户名:</p>
+            <input type="text" class="form-control mgb-lg js_userName" f="input">
+            <p f="p" class="text-muted">
+                用户密码：
+            </p><input type="text" class="form-control js_pwd" f="input">
+            <div f="div"><span f="span" class="text-muted mgr-lg">用户状态</span>
+                <div class="radio inline-block" f="radio-box">
+                    <label f="label" class="mgr-lg"><input type="radio" name="radio-box_3" value = "1" checked="">启用</label>
+                    <label f="label"><input type="radio" name="radio-box_3" value = "0">停用</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/html" id="find-node">
+    <div f="div">
+        <form id="edit-form">
+            <p f="p" class="text-muted">
+                流程名称：</p>
+            <input type="text" id = "noId" class="form-control mgb-lg js_userName" f="input">
+            <p f="p" class="text-muted">
+               流程描述：
+            </p><input type="text" id = "noDesc" class="form-control js_pwd" f="input">
+        
+        </form>
+    </div>
+</script>
+
+<script src="../../pub-ui/js/jquery-1.11.3.min.js"></script>
+<script src="../../pub-ui/js/interface.min.js"></script>
+<script src="../../pub-ui/plugins/artDialog/dialog-plus.js"></script>
+<script src="../../pub-script/pageWJ/jqpaginator.min.js"></script>
+<!--<script src="../../pub-script/pageWJ/pageStaticNode.js"></script>-->
+<script src="../../pub-script/showNode.js"></script>
+</html>
